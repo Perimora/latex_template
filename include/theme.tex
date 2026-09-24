@@ -1,0 +1,54 @@
+% =============================================================
+% Reusable LaTeX / Overleaf theme
+% Formatting follows the faible_thesis baseline.
+% Keep project-specific values in include/metadata.tex.
+% =============================================================
+
+% Core document setup
+\usepackage{graphicx}
+\usepackage[letterpaper,top=3.5cm,bottom=2cm,left=3cm,right=3cm,marginparwidth=1.75cm]{geometry}
+\usepackage[english]{babel}
+
+% Code and diagrams
+\usepackage{dirtree}
+\usepackage{listings}
+\usepackage{tikz}
+\usetikzlibrary{matrix,fit}
+
+% Figures, tables, math, and layout
+\usepackage{rotating}
+\usepackage{makecell}
+\usepackage{lscape}
+\usepackage{longtable}
+\usepackage{dsfont}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{booktabs}
+\usepackage{subcaption}
+\usepackage{float}
+\usepackage{titlesec}
+\usepackage{lipsum}
+
+% Load hyperlinks after the remaining packages.
+\usepackage[pdftex,pdfpagelabels=true]{hyperref}
+
+\newcommand{\sectionbreak}{\clearpage}
+
+\lstset{literate=%
+  {Ö}{{\"O}}1
+  {Ä}{{\"A}}1
+  {Ü}{{\"U}}1
+  {ß}{{\ss}}1
+  {ü}{{\"u}}1
+  {ä}{{\"a}}1
+  {ö}{{\"o}}1
+}
+
+% Optional native TikZ logo hook for title pages.
+% Redefine this macro in a project-specific theme if required.
+\newcommand{\TemplateLogo}{%
+  \begin{tikzpicture}[baseline=(current bounding box.center)]
+    \draw[line width=0.8pt] (0,0) rectangle (1.4,1.4);
+    \node at (0.7,0.7) {Logo};
+  \end{tikzpicture}%
+}

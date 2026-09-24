@@ -1,0 +1,39 @@
+% =============================================================
+% Project metadata
+% Edit this file first when starting a new document.
+% =============================================================
+
+\newcommand{\DocumentTitle}{Project Title}
+\newcommand{\DocumentSubtitle}{Optional subtitle or concise project description}
+\newcommand{\DocumentType}{Technical Report}
+\newcommand{\AuthorName}{Author Name}
+\newcommand{\AuthorDetails}{Program, role, or identifier}
+\newcommand{\AuthorEmail}{author@example.org}
+\newcommand{\InstitutionName}{Institution or Organization}
+\newcommand{\DepartmentName}{Department, Chair, or Team}
+\newcommand{\DocumentLocation}{City}
+\newcommand{\DocumentDate}{\today}
+
+\newcommand{\ReviewerOneLabel}{Reviewer}
+\newcommand{\ReviewerOne}{Name}
+\newcommand{\ReviewerTwoLabel}{Second Reviewer}
+\newcommand{\ReviewerTwo}{Name}
+\newcommand{\SupervisorLabel}{Supervisor}
+\newcommand{\Supervisor}{Name}
+
+% Optional front-matter/list switches.
+\newif\ifIncludeDeclaration
+\IncludeDeclarationfalse
+
+\newif\ifIncludeAbstract
+\IncludeAbstracttrue
+
+\newif\ifIncludeLists
+\IncludeListstrue
+
+% PDF metadata
+\hypersetup{
+  pdftitle={\DocumentTitle},
+  pdfauthor={\AuthorName},
+  pdfsubject={\DocumentType}
+}

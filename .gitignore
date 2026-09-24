@@ -1,0 +1,25 @@
+# LaTeX build artefacts
+*.aux
+*.bbl
+*.bcf
+*.blg
+*.fdb_latexmk
+*.fls
+*.lof
+*.log
+*.lot
+*.out
+*.run.xml
+*.synctex.gz
+*.toc
+*.xdv
+
+# Local/editor files
+.DS_Store
+.vscode/
+.idea/
+
+# Keep rendered PDFs in the repository, ignore other generated output.
+out/*
+!out/.gitkeep
+!out/*.pdf

@@ -1,0 +1,26 @@
+name: Render LaTeX on push
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'main.tex'
+      - 'content/**'
+      - 'include/**'
+      - 'assets/img/**'
+      - 'bibliography.bib'
+      - '.gitignore'
+      - '**/*.cls'
+      - '**/*.sty'
+      - '.github/workflows/render-main.yml'
+      - '.github/workflows/render-on-push.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  render:
+    uses: ./.github/workflows/render-main.yml
+    permissions:
+      contents: write

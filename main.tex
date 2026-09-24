@@ -1,0 +1,58 @@
+\documentclass{article}
+
+\input{include/theme}
+\input{include/metadata}
+
+\title{\DocumentTitle}
+\author{\AuthorName}
+\date{\DocumentDate}
+
+\begin{document}
+
+%--------------------------------------------------------------
+% FRONT PAGE AND DOCUMENT METADATA
+%--------------------------------------------------------------
+
+\include{content/00_frontpage}
+
+\ifIncludeDeclaration
+  \include{content/00a_declaration}
+\fi
+
+\ifIncludeAbstract
+  \include{content/00b_abstract}
+\fi
+
+\tableofcontents{}
+\newpage
+
+%--------------------------------------------------------------
+% MAIN CONTENT
+%--------------------------------------------------------------
+
+\include{content/01_introduction}
+\include{content/02_background}
+\include{content/03_related_work}
+\include{content/04_methodology}
+\include{content/05_evaluation}
+\include{content/06_results_discussion}
+\include{content/07_conclusion_outlook}
+
+%--------------------------------------------------------------
+% TABLES, FIGURES, BIBLIOGRAPHY AND APPENDICES
+%--------------------------------------------------------------
+
+\ifIncludeLists
+  \begingroup
+  \let\clearpage\relax
+  \listoftables
+  \listoffigures
+  \endgroup
+\fi
+
+\markboth{Bibliography}{Bibliography}
+\label{cha:bibliography}
+\bibliographystyle{IEEEtran}
+\bibliography{bibliography}
+
+\end{document}
