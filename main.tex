@@ -1,0 +1,55 @@
+\documentclass[11pt]{article}
+
+% Central visual/LaTeX setup and project-specific metadata.
+\input{include/theme}
+\input{include/metadata}
+
+\begin{document}
+
+% -------------------------------------------------------------
+% FRONT MATTER
+% -------------------------------------------------------------
+\include{content/00_frontpage}
+\pagenumbering{roman}
+
+\ifIncludeDeclaration
+  \include{content/00a_declaration}
+\fi
+
+\ifIncludeAbstract
+  \include{content/00b_abstract}
+\fi
+
+\tableofcontents
+\clearpage
+\pagenumbering{arabic}
+
+% -------------------------------------------------------------
+% MAIN CONTENT
+% -------------------------------------------------------------
+\include{content/01_introduction}
+\include{content/02_background}
+\include{content/03_related_work}
+\include{content/04_methodology}
+\include{content/05_evaluation}
+\include{content/06_results_discussion}
+\include{content/07_conclusion_outlook}
+
+% -------------------------------------------------------------
+% TABLES, FIGURES, BIBLIOGRAPHY AND APPENDICES
+% -------------------------------------------------------------
+\ifIncludeLists
+  \begingroup
+    \let\clearpage\relax
+    \listoftables
+    \listoffigures
+  \endgroup
+\fi
+
+\clearpage
+\phantomsection
+\addcontentsline{toc}{section}{Bibliography}
+\bibliographystyle{IEEEtran}
+\bibliography{bibliography}
+
+\end{document}

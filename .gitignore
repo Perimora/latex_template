@@ -1,0 +1,24 @@
+# LaTeX build artefacts
+*.aux
+*.bbl
+*.bcf
+*.blg
+*.fdb_latexmk
+*.fls
+*.lof
+*.log
+*.lot
+*.out
+*.run.xml
+*.synctex.gz
+*.toc
+*.xdv
+
+# Local/editor files
+.DS_Store
+.vscode/
+.idea/
+
+# Keep output directory itself but not generated PDFs by default.
+out/*
+!out/.gitkeep

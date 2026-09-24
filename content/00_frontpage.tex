@@ -1,0 +1,46 @@
+\begin{titlepage}
+  \thispagestyle{empty}
+
+  % Entire title page is native LaTeX/TikZ. No PDF background is used.
+  \begin{tikzpicture}[remember picture,overlay]
+    \fill[TemplateLight]
+      (current page.north west) rectangle
+      ([yshift=-1.35cm]current page.north east);
+    \fill[TemplateAccent]
+      (current page.south west) rectangle
+      ([yshift=0.18cm]current page.south east);
+  \end{tikzpicture}
+
+  \begin{minipage}[t]{0.18\textwidth}
+    \TemplateLogo
+  \end{minipage}%
+  \begin{minipage}[t]{0.80\textwidth}
+    \raggedleft
+    \small\textcolor{TemplateMuted}{\DocumentType}
+  \end{minipage}
+
+  \vspace{2.2cm}
+
+  {\Huge\bfseries\color{TemplateAccent}\DocumentTitle\par}
+  \vspace{0.55cm}
+  {\Large\DocumentSubtitle\par}
+
+  \vfill
+
+  \begin{tabular}{@{}p{0.29\textwidth}p{0.64\textwidth}@{}}
+    \textcolor{TemplateMuted}{Author} & \textbf{\AuthorName} \\
+    \textcolor{TemplateMuted}{Details} & \AuthorDetails \\
+    \textcolor{TemplateMuted}{E-mail} & \href{mailto:\AuthorEmail}{\AuthorEmail} \\
+    \addlinespace[0.8em]
+    \textcolor{TemplateMuted}{Institution} & \InstitutionName \\
+    \textcolor{TemplateMuted}{Unit} & \DepartmentName \\
+    \addlinespace[0.8em]
+    \textcolor{TemplateMuted}{\ReviewerOneLabel} & \ReviewerOne \\
+    \textcolor{TemplateMuted}{\ReviewerTwoLabel} & \ReviewerTwo \\
+    \textcolor{TemplateMuted}{\SupervisorLabel} & \Supervisor \\
+  \end{tabular}
+
+  \vspace{1.6cm}
+
+  {\DocumentLocation, \DocumentDate\par}
+\end{titlepage}

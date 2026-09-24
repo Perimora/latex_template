@@ -1,0 +1,88 @@
+% =============================================================
+% Reusable LaTeX / Overleaf theme
+% Keep project-specific values in include/metadata.tex.
+% =============================================================
+
+% Encoding and language
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\usepackage{microtype}
+
+% Page geometry and typography
+\usepackage[a4paper,top=3.0cm,bottom=2.5cm,left=3.0cm,right=3.0cm]{geometry}
+\usepackage{lmodern}
+\usepackage{setspace}
+\setstretch{1.08}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.55em}
+
+% Figures, tables, math
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{makecell}
+\usepackage{subcaption}
+\usepackage{float}
+\usepackage{amsmath}
+\usepackage{amssymb}
+
+% Code and diagrams
+\usepackage{listings}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta,calc,fit,matrix,positioning,shapes.geometric}
+
+% Colors and links
+\usepackage{xcolor}
+\definecolor{TemplateAccent}{HTML}{1F4E79}
+\definecolor{TemplateMuted}{HTML}{667085}
+\definecolor{TemplateLight}{HTML}{EEF2F6}
+\usepackage[pdfpagelabels=true]{hyperref}
+\hypersetup{
+  colorlinks=true,
+  linkcolor=TemplateAccent,
+  citecolor=TemplateAccent,
+  urlcolor=TemplateAccent,
+  pdfborder={0 0 0}
+}
+
+% Headings
+\usepackage{titlesec}
+\titleformat{\section}
+  {\Large\bfseries\color{TemplateAccent}}
+  {\thesection}{0.75em}{}
+\titleformat{\subsection}
+  {\large\bfseries}
+  {\thesubsection}{0.75em}{}
+
+% Start each top-level section on a fresh page, matching the source project.
+\newcommand{\sectionbreak}{\clearpage}
+
+% Listings: UTF-8 friendly defaults for common German characters.
+\lstset{
+  basicstyle=\ttfamily\small,
+  frame=single,
+  breaklines=true,
+  columns=fullflexible,
+  keepspaces=true,
+  showstringspaces=false,
+  literate=
+    {Ö}{{\"O}}1 {Ä}{{\"A}}1 {Ü}{{\"U}}1
+    {ö}{{\"o}}1 {ä}{{\"a}}1 {ü}{{\"u}}1
+    {ß}{{\ss}}1
+}
+
+% -----------------------------------------------------------------
+% Native vector mark for the title page.
+% No PDF background, rasterized title page, or external logo required.
+% Replace/override this macro if a project needs another native mark.
+% -----------------------------------------------------------------
+\newcommand{\TemplateLogo}{%
+  \begin{tikzpicture}[x=1cm,y=1cm,baseline=(current bounding box.center)]
+    \fill[TemplateAccent] (0,0) rectangle (0.34,1.35);
+    \fill[TemplateAccent] (0.52,0) rectangle (1.55,0.34);
+    \draw[TemplateAccent,line width=1.2pt] (0.52,0.52) rectangle (1.55,1.35);
+    \draw[TemplateAccent,line width=1.2pt] (0.76,0.76) -- (1.31,1.11);
+    \draw[TemplateAccent,line width=1.2pt] (0.76,1.11) -- (1.31,0.76);
+  \end{tikzpicture}%
+}
