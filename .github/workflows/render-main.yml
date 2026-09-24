@@ -1,0 +1,44 @@
+name: Render main document
+
+on:
+  workflow_dispatch:
+  workflow_call:
+
+permissions:
+  contents: write
+
+jobs:
+  render:
+    name: Render main.tex
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Compile main.tex
+        uses: xu-cheng/latex-action@v3
+        with:
+          root_file: main.tex
+          args: -pdf -interaction=nonstopmode -halt-on-error -file-line-error
+
+      - name: Prepare rendered PDF
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p out
+          cp main.pdf out/main.pdf
+
+      - name: Upload rendered PDF
+        uses: actions/upload-artifact@v4
+        with:
+          name: compiled-pdf
+          path: out/main.pdf
+          if-no-files-found: error
+          retention-days: 30
+
+      - name: Commit rendered PDF
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: Render main PDF
+          file_pattern: out/main.pdf
