@@ -1,16 +1,19 @@
-\documentclass[11pt]{article}
+\documentclass{article}
 
-% Central visual/LaTeX setup and project-specific metadata.
 \input{include/theme}
 \input{include/metadata}
 
+\title{\DocumentTitle}
+\author{\AuthorName}
+\date{\DocumentDate}
+
 \begin{document}
 
-% -------------------------------------------------------------
-% FRONT MATTER
-% -------------------------------------------------------------
+%--------------------------------------------------------------
+% FRONT PAGE AND DOCUMENT METADATA
+%--------------------------------------------------------------
+
 \include{content/00_frontpage}
-\pagenumbering{roman}
 
 \ifIncludeDeclaration
   \include{content/00a_declaration}
@@ -20,13 +23,13 @@
   \include{content/00b_abstract}
 \fi
 
-\tableofcontents
-\clearpage
-\pagenumbering{arabic}
+\tableofcontents{}
+\newpage
 
-% -------------------------------------------------------------
+%--------------------------------------------------------------
 % MAIN CONTENT
-% -------------------------------------------------------------
+%--------------------------------------------------------------
+
 \include{content/01_introduction}
 \include{content/02_background}
 \include{content/03_related_work}
@@ -35,20 +38,20 @@
 \include{content/06_results_discussion}
 \include{content/07_conclusion_outlook}
 
-% -------------------------------------------------------------
+%--------------------------------------------------------------
 % TABLES, FIGURES, BIBLIOGRAPHY AND APPENDICES
-% -------------------------------------------------------------
+%--------------------------------------------------------------
+
 \ifIncludeLists
   \begingroup
-    \let\clearpage\relax
-    \listoftables
-    \listoffigures
+  \let\clearpage\relax
+  \listoftables
+  \listoffigures
   \endgroup
 \fi
 
-\clearpage
-\phantomsection
-\addcontentsline{toc}{section}{Bibliography}
+\markboth{Bibliography}{Bibliography}
+\label{cha:bibliography}
 \bibliographystyle{IEEEtran}
 \bibliography{bibliography}
 
