@@ -19,6 +19,7 @@
 .vscode/
 .idea/
 
-# Keep output directory itself but not generated PDFs by default.
+# Keep rendered PDFs in the repository, ignore other generated output.
 out/*
 !out/.gitkeep
+!out/*.pdf
