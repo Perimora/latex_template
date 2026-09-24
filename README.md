@@ -10,15 +10,19 @@ Reusable modular template for LaTeX and Overleaf projects.
 4. Put document assets under [`img/`](img/).
 5. Compile [`main.tex`](main.tex) with pdfLaTeX/BibTeX (Overleaf's default PDFLaTeX workflow works).
 
-## Automated rendering
+## Rendering
 
-After a push to `main`, the GitHub Actions workflow in [`.github/workflows/render-latex.yml`](.github/workflows/render-latex.yml) detects whether relevant LaTeX sources have changed.
+The actual rendering logic lives in [`.github/workflows/render-main.yml`](.github/workflows/render-main.yml).
 
-If changes affecting the document are detected, [`main.tex`](main.tex) is compiled automatically. The rendered PDF is written to [`out/main.pdf`](out/main.pdf) and committed back to the repository.
+This workflow compiles [`main.tex`](main.tex), writes the result to [`out/main.pdf`](out/main.pdf), uploads the PDF as a GitHub Actions artifact, and commits the rendered PDF back to the repository.
 
-Changes inside [`out/`](out/) do not trigger another build, preventing recursive render commits.
+It can be started manually from the GitHub Actions UI via `workflow_dispatch` and can also be reused by other workflows via `workflow_call`.
 
-The compiled PDF is also available as a GitHub Actions artifact for the corresponding workflow run.
+For automatic rendering, [`.github/workflows/render-on-push.yml`](.github/workflows/render-on-push.yml) runs after pushes to `main` when relevant document sources change, including [`main.tex`](main.tex), files below [`content/`](content/), [`include/`](include/), [`img/`](img/), [`bibliography.bib`](bibliography.bib), and LaTeX class/style files.
+
+The push workflow delegates to the same reusable renderer, so manual and automatic builds use the identical render path.
+
+Changes to [`out/`](out/) do not match the push workflow and therefore do not cause recursive render commits.
 
 ## Language
 
