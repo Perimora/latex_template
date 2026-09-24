@@ -7,7 +7,7 @@ Reusable modular template for LaTeX and Overleaf projects.
 1. Edit [`include/metadata.tex`](include/metadata.tex).
 2. Replace the scaffold text in [`content/`](content/).
 3. Add references to [`bibliography.bib`](bibliography.bib).
-4. Put document assets under [`doc/`](doc/): figures/layout assets in [`doc/img/`](doc/img/), diagram sources in [`doc/img/diagrams/views/`](doc/img/diagrams/views/), and project notes/specifications in [`doc/specifications/`](doc/specifications/).
+4. Put document assets under [`img/`](img/).
 5. Compile [`main.tex`](main.tex) with pdfLaTeX/BibTeX (Overleaf's default PDFLaTeX workflow works).
 
 ## Automated rendering
