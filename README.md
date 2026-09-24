@@ -2,44 +2,25 @@
 
 Reusable modular template for LaTeX and Overleaf projects.
 
-## Design goals
-
-- one small `main.tex` as the document entry point;
-- reusable visual/package setup in `include/theme.tex`;
-- project-specific values in `include/metadata.tex`;
-- modular front matter and content in `content/`;
-- project-support material grouped under `doc/` (`doc/img`, `doc/img/diagrams/views`, `doc/img/layouts`, `doc/specifications`);
-- native LaTeX/TikZ title page — no rendered PDF background;
-- directly importable into Overleaf as a ZIP.
-
 ## Start a new project
 
-1. Edit `include/metadata.tex`.
-2. Replace the scaffold text in `content/`.
-3. Add references to `bibliography.bib`.
-4. Put document assets under `doc/`: figures/layout assets in `doc/img/`, diagram sources in `doc/img/diagrams/views/`, and project notes/specifications in `doc/specifications/`.
-5. Compile `main.tex` with pdfLaTeX/BibTeX (Overleaf's default PDFLaTeX workflow works).
+1. Edit [`include/metadata.tex`](include/metadata.tex).
+2. Replace the scaffold text in [`content/`](content/).
+3. Add references to [`bibliography.bib`](bibliography.bib).
+4. Put document assets under [`doc/`](doc/): figures/layout assets in [`doc/img/`](doc/img/), diagram sources in [`doc/img/diagrams/views/`](doc/img/diagrams/views/), and project notes/specifications in [`doc/specifications/`](doc/specifications/).
+5. Compile [`main.tex`](main.tex) with pdfLaTeX/BibTeX (Overleaf's default PDFLaTeX workflow works).
 
-## Title-page graphics
+## Automated rendering
 
-The default mark is defined as the `\TemplateLogo` TikZ macro in `include/theme.tex`.
-There is intentionally no `frontpage.pdf`, no PDF-page background, and no dependency on a pre-rendered title page.
-For a project-specific native logo, redefine `\TemplateLogo` with TikZ/vector primitives.
+After a push to `main`, the GitHub Actions workflow in [`.github/workflows/render-latex.yml`](.github/workflows/render-latex.yml) detects whether relevant LaTeX sources have changed.
+
+If changes affecting the document are detected, [`main.tex`](main.tex) is compiled automatically. The rendered PDF is written to [`out/main.pdf`](out/main.pdf) and committed back to the repository.
+
+Changes inside [`out/`](out/) do not trigger another build, preventing recursive render commits.
+
+The compiled PDF is also available as a GitHub Actions artifact for the corresponding workflow run.
 
 ## Language
 
-The default language is English. For a German document, change
-`\usepackage[english]{babel}` to `\usepackage[ngerman]{babel}` in `include/theme.tex`.
+The default language is English. To use a different language, adjust the language option in `\usepackage[<language>]{babel}` within [`include/theme.tex`](include/theme.tex) (e.g., replace `english` with `ngerman` for German, `french` for French, etc.).
 
-## Project support structure
-
-```text
-doc/
-├── img/
-│   ├── diagrams/
-│   │   └── views/
-│   └── layouts/
-└── specifications/
-```
-
-`doc/img/layouts/` is intentionally only a source/assets location. The template title page itself remains fully native LaTeX/TikZ and does not depend on a rendered PDF background.
